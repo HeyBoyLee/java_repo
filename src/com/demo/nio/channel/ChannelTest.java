@@ -31,5 +31,4 @@ public class ChannelTest {
       e.printStackTrace();
     }
   }
-
 }
