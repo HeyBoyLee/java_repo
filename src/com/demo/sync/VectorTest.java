@@ -6,6 +6,8 @@ import java.util.Vector;//线程安全
  * Created by heyboy on 6/23/17.
  * 运行报错：　java.lang.ArrayIndexOutOfBoundsException:
  * synchronized 互斥同步
+ * vector的线程安全是指读操作或写操作是线程安全的，
+ * 但在多线程里分别读，写的话是不能保证同步的
  */
 public class VectorTest {
   private static Vector<Integer> vector = new Vector<Integer>();

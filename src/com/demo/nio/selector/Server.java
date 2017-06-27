@@ -71,18 +71,18 @@ public class Server implements Runnable {
   private void read(SelectionKey key) {
     try {
       buf.clear();
-      SocketChannel sc = (SocketChannel) key.channel();
-      int count = sc.read(buf);
+      SocketChannel channel = (SocketChannel) key.channel();
+      int count = channel.read(buf);
       if (count == -1) {
-        sc.close();
+        channel.close();
         key.cancel();
         return;
       }
 
       String info = new String(buf.array()).trim();
-      if (sc.equals(clientChannel1)) {
+      if (channel.equals(clientChannel1)) {
         System.out.println("clinet1 message:" + info);
-      } else if (sc.equals(clientChannel2)) {
+      } else if (channel.equals(clientChannel2)) {
         System.out.println("client2 message:" + info);
       }
 
