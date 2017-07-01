@@ -20,10 +20,15 @@ public class VectorTest {
 
       Thread removeThread = new Thread(new Runnable() {
         @Override
-        public void run() {
+        public void run(){
           synchronized (vector) {  // + synchronized 后可以保证正常输出
-            for (int i = 0; i < vector.size(); i++) {
-              vector.remove(i);
+            try {
+              throw new Exception("my excpetion");// 同步块中抛异常时，会释放锁
+//              for (int i = 0; i < vector.size(); i++) {
+//                vector.remove(i);
+//              }
+            } catch (Exception e) {
+              e.printStackTrace();
             }
           }
         }
